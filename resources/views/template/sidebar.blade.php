@@ -1,7 +1,7 @@
     <div class="sidebar-wrapper">
         <div class="user">
             <div class="photo">
-                <img src="public/assets/img/icon/hacker-mask.png" />
+                <img src="/assets/img/icon/hacker-mask.png" />
             </div>
             <div class="info">
                 <a data-toggle="collapse" href="#collapseExample" class="collapsed">
