@@ -62,4 +62,8 @@ CACHE_DRIVER=array
 QUEUE_DRIVER=array
 SESSION_DRIVER=array
 ```
+
+```
+mysql://b55e3b896acdb6:ae0dd748@us-cdbr-iron-east-01.cleardb.net/heroku_b9f5bf567b8f9dd?reconnect=true
+```
 ## Feel Free to update ...
