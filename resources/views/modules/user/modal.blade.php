@@ -1,4 +1,4 @@
-notice modal -->
+<!-- notice modal -->
 <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-notice">
         <div class="modal-content">
@@ -69,7 +69,7 @@ notice modal -->
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="row">
+                    <div class="row">
                         <label class="col-md-3 label-on-left">Password</label>
                         <div class="col-md-9">
                             <div class="form-group label-floating is-empty">
@@ -78,7 +78,7 @@ notice modal -->
                                 <span class="help-box-password"></span>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
                     <div class="row">
                         <label class="col-md-3 label-on-left">Gender</label>
                         <div class="col-md-9">

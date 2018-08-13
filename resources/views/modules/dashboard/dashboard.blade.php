@@ -17,7 +17,7 @@
 						                                        <tr>
 						                                            <td>
 						                                                <div class="flag">
-						                                                    <img src="../assets/img/flags/US.png">
+						                                                    <img src="public/assets/img/flags/US.png">
 						                                            </div></td>
 						                                            <td>USA</td>
 						                                            <td class="text-right">
@@ -30,7 +30,7 @@
 						                                        <tr>
 						                                            <td>
 						                                                <div class="flag">
-						                                                    <img src="../assets/img/flags/DE.png">
+						                                                    <img src="public/assets/img/flags/DE.png">
 						                                            </div></td>
 						                                            <td>Germany</td>
 						                                            <td class="text-right">
@@ -43,7 +43,7 @@
 						                                        <tr>
 						                                            <td>
 						                                                <div class="flag">
-						                                                    <img src="../assets/img/flags/AU.png">
+						                                                    <img src="public/assets/img/flags/AU.png">
 						                                            </div></td>
 						                                            <td>Australia</td>
 						                                            <td class="text-right">
@@ -56,7 +56,7 @@
 						                                        <tr>
 						                                            <td>
 						                                                <div class="flag">
-						                                                    <img src="../assets/img/flags/GB.png">
+						                                                    <img src="public/assets/img/flags/GB.png">
 						                                            </div></td>
 						                                            <td>United Kingdom</td>
 						                                            <td class="text-right">
@@ -69,7 +69,7 @@
 						                                        <tr>
 						                                            <td>
 						                                                <div class="flag">
-						                                                    <img src="../assets/img/flags/RO.png">
+						                                                    <img src="public/assets/img/flags/RO.png">
 						                                            </div></td>
 						                                            <td>Romania</td>
 						                                            <td class="text-right">
@@ -82,7 +82,7 @@
 						                                        <tr>
 						                                            <td>
 						                                                <div class="flag">
-						                                                    <img src="../assets/img/flags/BR.png">
+						                                                    <img src="public/assets/img/flags/BR.png">
 						                                            </div></td>
 						                                            <td>Brasil</td>
 						                                            <td class="text-right">
@@ -277,7 +277,7 @@
 								<div class="card card-product">
 									<div class="card-image" data-header-animation="true">
 										<a href="#pablo">
-											<img class="img" src="../assets/img/card-2.jpg">
+											<img class="img" src="public/assets/img/card-2.jpg">
 										</a>
 									</div>
 
@@ -320,7 +320,7 @@
 								<div class="card card-product">
 									<div class="card-image" data-header-animation="true">
 										<a href="#pablo">
-											<img class="img" src="../assets/img/card-3.jpg">
+											<img class="img" src="public/assets/img/card-3.jpg">
 										</a>
 									</div>
 
@@ -363,7 +363,7 @@
 								<div class="card card-product">
 									<div class="card-image" data-header-animation="true">
 										<a href="#pablo">
-											<img class="img" src="../assets/img/card-1.jpg">
+											<img class="img" src="public/assets/img/card-1.jpg">
 										</a>
 									</div>
 

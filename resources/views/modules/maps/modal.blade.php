@@ -15,7 +15,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="picture">
-                                <img src="../../assets/img/card-1.jpg" alt="Thumbnail Image"  class="img-rounded img-responsive">
+                                <img src="../public/assets/img/card-1.jpg" alt="Thumbnail Image"  class="img-rounded img-responsive">
                             </div>
                         </div>
                     </div>
@@ -28,7 +28,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="picture">
-                                <img src="../../assets/img/card-2.jpg" alt="Thumbnail Image"  class="img-rounded img-responsive">
+                                <img src="../public/assets/img/card-2.jpg" alt="Thumbnail Image"  class="img-rounded img-responsive">
                             </div>
                         </div>
                     </div>
