@@ -68,4 +68,26 @@ SESSION_DRIVER=array
 ```
 mysql://b55e3b896acdb6:ae0dd748@us-cdbr-iron-east-01.cleardb.net/heroku_b9f5bf567b8f9dd?reconnect=true
 ```
+
+
+# Update Deploy heroku
+
+```
+$ heroku login
+
+Jika belum checkout
+$ heroku git:clone -a trasi-polindra
+$ cd trasi-polindra
+
+$ git add .
+$ git commit -m "Updated database configuration"
+
+$ git push heroku master
+
+```
+# run  artisan on heroku
+```
+heroku run composer dumpt-autoload
+heroku run php artisan migrate:refresh
+```
 ## Feel Free to update ...
