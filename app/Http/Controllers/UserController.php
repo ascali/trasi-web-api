@@ -37,7 +37,7 @@ class UserController extends Controller
             'pob' => $request->input('pob'),
             'dob' => $request->input('dob'),
             'phone' => $request->input('phone'),
-            'role_id'=>3,
+            'role_id'=>$request->input('role_id'),
             'activation'=> 0,
             'created_by'=> $username,
             'updated_by'=> $username
