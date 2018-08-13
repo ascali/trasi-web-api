@@ -35,6 +35,7 @@ class RoleController extends Controller
       ]);
       $roles = new Role;
       $roles->fill([
+        // 'role_id' => $request->input('role_id');
         'rolename' => $request->input('rolename'),
         'created_by' => $request->input('updated_by'),
         'updated_by' => $request->input('updated_by'),

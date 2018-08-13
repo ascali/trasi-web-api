@@ -22,9 +22,9 @@ class UserController extends Controller
       ]);
 
         $hasher = app()->make('hash');
+        $password = $hasher->make($request->input('password'));
         $username = $request->input('username');
         $email = $request->input('email');
-        $password = $hasher->make($request->input('password'));
         $longname = $request->input('longname');
         $nik = $request->input('nik');
         $register = User::create([

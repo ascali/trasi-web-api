@@ -36,9 +36,11 @@ This web is simple blog to explore using rest full api with lumen
 3. ``` php artisan migrate ```
 
 ## To run seeder 
-1. create seeder on seeds/SeederName.php
+1. create seeder on seeds/SeederName.php Or ```php artisan make:seeder UsersTableSeeder```
 2. ``` composer dump-autoload ```
-3. ``` php artisan migrate:refresh --seed ```
+3. ``` php artisan db:seed ```
+4. ``` php artisan db:seed --class=UsersTableSeeder```
+5. ``` php artisan migrate:refresh --seed ```
 
 ## Set up .env
 ``` 
