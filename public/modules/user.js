@@ -110,7 +110,8 @@ function edit(id)
         dataType: "JSON",
         success: function(dataRow)
         {
-        	$('#activation').val(dataRow.data[0].activation);
+            // $('#activation').val();
+            $('#activation').append('<option value="'+(dataRow.data[0].activation=='ACTIVE'?1:0)+'">'+dataRow.data[0].activation+'</option>');
             $('#roleId').val(dataRow.data[0].role_id);
             $('#nik').val(dataRow.data[0].nik);
 

@@ -44,9 +44,9 @@
                     <div class="row">
                         <label class="col-md-3 label-on-left">Image</label>
                         <div class="col-md-9">
-                            <div class="form-group label-floating is-empty">
-                                <label class="control-label"></label>
-                                <input type="text" class="form-control" name="image" id="image" required="">
+                            <div class="form-group is-empty">
+                                <label class="control-label">Klik disini untuk upload gambar</label>
+                                <input type="file" class="" name="image" id="image" required="">
                                 <span class="help-box-image"></span>
                             </div>
                         </div>

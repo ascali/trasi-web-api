@@ -17,7 +17,7 @@
                                 <label class="control-label"></label>
                                 <select class="selectpicker" data-style="select-with-transition" title="Choose Status" name="activation" id="activation">
                                         <option disabled> Choose Status</option>
-                                        <option selected value="1">Active </option>
+                                        <option value="1">Active </option>
                                         <option value="0">Not Active</option>
                                     </select>
                                 <span class="help-box-activation"></span>
@@ -69,7 +69,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <!-- <div class="row">
                         <label class="col-md-3 label-on-left">Password</label>
                         <div class="col-md-9">
                             <div class="form-group label-floating is-empty">
@@ -78,7 +78,7 @@
                                 <span class="help-box-password"></span>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row">
                         <label class="col-md-3 label-on-left">Gender</label>
                         <div class="col-md-9">

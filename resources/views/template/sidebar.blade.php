@@ -65,12 +65,12 @@
                 </a>
             </li>
 
-            <li class="maps">
+            <!-- <li class="maps">
                 <a href="maps">
                     <i class="material-icons">place</i>
                     <p> Maps </p>
                 </a>
-            </li>
+            </li> -->
 
             <li class="news">
                 <a href="news">
@@ -79,12 +79,12 @@
                 </a>
             </li>
 
-            <li class="report">
+            <!-- <li class="report">
                 <a href="report">
                     <i class="material-icons">description</i>
                     <p> Reports </p>
                 </a>
-            </li>
+            </li> -->
             <!-- <li class="">
                 <a data-toggle="collapse" href="#pagesExamples">
                     <i class="material-icons">image</i>

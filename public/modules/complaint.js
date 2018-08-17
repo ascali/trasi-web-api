@@ -29,7 +29,11 @@ $(document).ready(function() {
                                 }
                             },
                             {
-                                "data": "description"
+                                "data": null,
+                                "mRender": function(data, type, row){
+                                    var row = " Latitude: "+row.latitude+' - Longitude: '+row.longitude;
+                                    return row;
+                                }
                             },
                             {
                                 "data": "nik"
@@ -52,7 +56,7 @@ $(document).ready(function() {
                             {
                             	"data": null,
                             	"mRender": function(data, type, row){
-                            		return row.last_position;
+                            		return row.address;
                             	}
                             },
                             /*{

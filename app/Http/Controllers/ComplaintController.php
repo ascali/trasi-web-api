@@ -57,7 +57,9 @@ class ComplaintController extends Controller
 
     public function sos_complaint(Request $request)
     {
-
+      // you can insert the user last position here
+      // ... code
+      // then you insert the complaint with last position user
       $complaint = new Complaint;
       $complaint->fill([
         'user_id' => $request->input('user_id'),
@@ -65,9 +67,9 @@ class ComplaintController extends Controller
         // 'in_charge_police' => $request->input('in_charge_police'),
         // 'description' => $request->input('description'),
         'complaint_status' => 0,
-        /*'latitude' => $request->input('latitude'),
-        'longitude' => $request->input('longitude'),*/
-        // 'address' => $request->input('address'),
+        'latitude' => $request->input('latitude'),
+        'longitude' => $request->input('longitude'),
+        'address' => $request->input('address'),
         'created_by' => $request->input('updated_by'),
         'updated_by' => $request->input('updated_by')
       ]);
