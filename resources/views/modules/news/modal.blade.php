@@ -6,7 +6,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="material-icons">clear</i></button>
                 <h5 class="modal-title" id="myModalLabel">How Do You Become an Affiliate?</h5>
             </div>
-            <form method="post" action="javascript:void(0)" id="form" class="form-horizontal">
+            <form method="post" enctype="multipart/form-data" action="javascript:void(0)" id="form" class="form-horizontal">
             <div class="modal-body">
 
             <!-- <div class="card"> -->
@@ -41,15 +41,23 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" id="images">
                         <label class="col-md-3 label-on-left">Image</label>
                         <div class="col-md-9">
-                            <div class="form-group is-empty">
+                            <!-- <div class="form-group is-empty">
                                 <label class="control-label">Klik disini untuk upload gambar</label>
                                 <input type="file" class="" name="image" id="image" required="">
                                 <span class="help-box-image"></span>
+                            </div> -->
+                            <div id="image_preview"><img id="previewing" src="" /></div>
+                            <hr id="line">
+                            <div id="selectImage">
+                                <label>Select Your Image</label><br/>
+                                <input type="file" name="image" id="image" required />
                             </div>
                         </div>
+                        
+
                     </div>
                     <input type="hidden" name="news_id" id="news_id">
                     <input type="hidden" name="updated_by" id="updatedBy">
@@ -57,8 +65,8 @@
             <!-- </div> -->
 
             </div>
-            <div class="modal-footer text-right">
-                <button type="submit" class="btn btn-fill btn-round btn-rose" id="btnSave" onclick="save()">Submit</button>
+            <div class="modal-footer text-right"> <!-- onclick="save()" -->
+                <button type="submit" class="btn btn-fill btn-round btn-rose submit" id="btnSave">Submit</button>
                 <button data-dismiss="modal" class="btn btn-fill btn-round">Cancel</button>
             </div>
             </form>

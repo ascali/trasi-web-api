@@ -33,27 +33,51 @@ class NewsController extends Controller
         'title' => 'required|unique:news',
         'category' => 'required',
         'main' => 'required',
-        // 'image' => 'required',
+        'image' => 'required',
         'updated_by' => 'required'
       ]);
 
-      // $image = Str::random(34);
-      $request->file('image')->move('/', $_FILES['image']['name']);
+      $temp = explode(".", $_FILES["image"]["name"]);
+      $newfilename = round(microtime(true)) . '.' . end($temp);
+      $target_file = 'image/'.$newfilename;
+      $uploadOk = 1;
+      $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
-      $news = new News;
-      $news->fill([
-        'title' => $request->input('title'),
-        'category' => $request->input('category'),
-        'main' => $request->input('main'),
-        // 'image' => $_FILES['image'],
-        'created_by' => $request->input('updated_by'),
-        'updated_by' => $request->input('updated_by'),
-      ]);
-      if($news->save()){
+      // Allow certain file formats
+      if($imageFileType != 'jpg' && $imageFileType != 'png' && $imageFileType != 'jpeg' && $imageFileType != 'gif') {
+        $uploadOk = 0;
         $res['status'] = true;
-        $res['data'] = 'Success add new News!';
+        $res['data'] = 'Format file hanya JPG, JPEG, PNG & GIF yang diperbolehkan.';
         return response($res);
       }
+
+      if ($uploadOk == 0) {
+        $res['status'] = true;
+        $res['data'] = 'Gagal upload file gambar.';
+        return response($res);
+      } else {
+          if (move_uploaded_file($_FILES['image']['tmp_name'], $target_file)) {
+            $news = new News;
+            $news->fill([
+              'title' => $request->input('title'),
+              'category' => $request->input('category'),
+              'main' => $request->input('main'),
+              'image' =>  $newfilename,
+              'created_by' => $request->input('updated_by'),
+              'updated_by' => $request->input('updated_by'),
+            ]);
+            if($news->save()){
+              $res['status'] = true;
+              $res['data'] = 'Success add new News!';
+              return response($res);
+            }
+          } else {
+            $res['status'] = true;
+            $res['data'] = 'Terjadi kesalahan saat mengunggah file gambar.';
+            return response($res);
+          }
+      }
+
     }
     /**
      * Get one News by id
@@ -92,7 +116,7 @@ class NewsController extends Controller
           'title' => $request->input('title'),
           'category' => $request->input('category'),
           'main' => $request->input('main'),
-          'image' => $request->input('image'),
+          // 'image' => $request->input('image'),
           'updated_by' => $request->input('updated_by'),
         ]);
         $res['status'] = true;

@@ -55,6 +55,7 @@ $app->post('/role/delete/{id}', 'RoleController@delete');
 /* Module User */
 $app->get('/user/all', ['middleware' => 'auth', 'uses' => 'UserController@user_all']);
 $app->get('/user/{id}', ['middleware' => 'auth', 'uses' => 'UserController@get_user']);
+$app->get('/user/role/{id}', ['middleware' => 'auth', 'uses' => 'UserController@get_user_role']);
 $app->post('/user/create', ['middleware' => 'auth', 'uses' => 'UserController@create']);
 $app->post('/user/update', ['middleware' => 'auth', 'uses' => 'UserController@update']);
 $app->post('/user/delete/{id}', ['middleware' => 'auth', 'uses' => 'UserController@delete']);
@@ -65,7 +66,7 @@ $app->get('/complaint/all', 'ComplaintController@get_complaint');
 $app->get('/complaint/all/{id}', 'ComplaintController@get_complaint_user_id');
 $app->get('/complaint/{id}', 'ComplaintController@get_complaint_id');
 $app->post('/complaint/sos_complaint', 'ComplaintController@sos_complaint');
-
+$app->post('/complaint/update', 'ComplaintController@update');
 
 /* module news */
 $app->get('/news/all', 'NewsController@index');

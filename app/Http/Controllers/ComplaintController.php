@@ -80,5 +80,26 @@ class ComplaintController extends Controller
       }
     }
 
+    public function update(Request $request)
+    {
+
+      $id = $request->input('complaint_id');
+      $Complaint = Complaint::find($id);
+      if ($Complaint !== null) {
+        $Complaint->update([
+          'in_charge_police' => $request->input('in_charge_police'),
+          'complaint_status' => 1,
+          'updated_by' => $request->input('updated_by'),
+        ]);
+        $res['status'] = true;
+        $res['data'] = 'Success update '.$request->input('in_charge_police');
+        return response($res);
+      }else{
+        $res['status'] = false;
+        $res['data'] = 'Please fill field!';
+        return response($res);
+      }
+    }
+
     
 }

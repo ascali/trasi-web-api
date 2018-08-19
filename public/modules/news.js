@@ -29,7 +29,11 @@ $(document).ready(function() {
                                 }
                             },
                             {
-                                "data": "image"
+                                "data": "null",
+                                "mRender": function(data, type, row){
+                                    var img = '<img src="'+base_url+'/image/'+row.image+'" height="40px" />';
+                                    return img;
+                                }
                             },
                             {
                                 "data": "updated_by"
@@ -71,6 +75,8 @@ function add()
     $('#formModal').modal('show'); // show bootstrap modal
     $('.modal-title').text('Form Input News'); // Set Title to Bootstrap modal title
     $('#btnSave').text('Save');
+    $('#images').show();
+    $('#image').show();
 
 }
 
@@ -93,7 +99,9 @@ function edit(id)
             $('#category').val(dataRow.data.category);
             $('#title').val(dataRow.data.title);
             $('#main').val(dataRow.data.main);
-            $('#image').val(dataRow.data.image);
+            // $('#image').val(dataRow.data.image);
+            $('#images').hide();
+            $('#image').hide();
             $('#updatedBy').val(session.data.email);
             $('#formModal').modal('show'); // show bootstrap modal when complete loaded
             $('.modal-title').text('Form Edit News'); // Set title to Bootstrap modal title
@@ -181,3 +189,95 @@ function save()
         }
     });
 }
+
+
+$(document).ready(function (e) {
+
+    $("#form").on('submit',(function(e) {
+    e.preventDefault();
+    $('#btnSave').text('saving...'); //change button text
+    $('#btnSave').attr('disabled',true); //set button disable 
+    var url;
+
+    if(save_method == 'add') {
+        url = base_url+"/api/v1/news/create";
+    } else {
+        url = base_url+"/api/v1/news/update";
+    }
+
+    $("#message").empty();
+    $('#loading').show();
+    $.ajax({
+    url: url, // Url to which the request is send
+    type: "POST",             // Type of request to be send, called as method
+    data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+    contentType: false,       // The content type used when sending data to the server.
+    cache: false,             // To unable request pages to be cached
+    processData:false,        // To send DOMDocument or non processed data file it is set to false
+    success: function(data)   // A function to be called if request succeeds
+    {
+        if(data.status == true) //if success close modal and reload ajax table
+        {
+            $('#formModal').modal('hide');
+            reload_table();
+        }
+        else
+        {
+            $('#formModal').modal('hide');
+            reload_table();
+            console.log(data);
+            alert('Error Something wrong');
+        }
+        $('#btnSave').text('save'); //change button text
+        $('#btnSave').attr('disabled',false); //set button enable 
+        alert('Success Saving Data');
+
+        $('#loading').hide();
+        $("#message").html(data);
+    },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            // alert('Error adding / update data');
+            // console.log(JSON.parse(jqXHR.responseText));
+            var isError = JSON.parse(jqXHR.responseText);
+            $(".help-box-category").html("<small>"+isError.category[0]+"</small>").css('color','red');
+            $(".help-box-title").html("<small>"+isError.title[0]+"</small>").css('color','red');
+            $(".help-box-main").html("<small>"+isError.main[0]+"</small>").css('color','red');
+            $(".help-box-image").html("<small>"+isError.image[0]+"</small>").css('color','red');
+            $('#btnSave').text('save'); //change button text
+            $('#btnSave').attr('disabled',false); //set button enable 
+
+        }
+    });
+}));
+
+// Function to preview image after validation
+$(function() {
+    $("#image").change(function() {
+        $("#message").empty(); // To remove the previous error message
+        var file = this.files[0];
+        var imagefile = file.type;
+        var match= ["image/jpeg","image/png","image/jpg"];
+        if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2])))
+        {
+            $('#previewing').attr('src','noimage.png');
+            $("#message").html("<p id='error'>Please Select A valid Image File</p>"+"<h4>Note</h4>"+"<span id='error_message'>Only jpeg, jpg and png Images type allowed</span>");
+            return false;
+        }
+        else
+        {
+            var reader = new FileReader();
+            reader.onload = imageIsLoaded;
+            reader.readAsDataURL(this.files[0]);
+        }
+    });
+});
+
+function imageIsLoaded(e) {
+    $("#image").css("color","green");
+    $('#image_preview').css("display", "block");
+    $('#previewing').attr('src', e.target.result);
+    $('#previewing').attr('width', '250px');
+    $('#previewing').attr('height', '230px');
+    };
+});

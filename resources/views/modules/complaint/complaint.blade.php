@@ -37,7 +37,7 @@
                                     <th>Position</th>
                                     <!-- <th>Updated</th>
                                     <th>By</th> -->
-                                    <!-- <th class="disabled-sorting text-center">Actions</th> -->
+                                    <th class="disabled-sorting text-center">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -50,6 +50,6 @@
     </div> <!-- end row -->
 </div>
 
-@include('modules.role.modal')
+@include('modules.complaint.modal')
 
 @stop

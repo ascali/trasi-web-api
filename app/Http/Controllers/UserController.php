@@ -71,6 +71,20 @@ class UserController extends Controller
       }
     }
 
+    public function get_user_role(Request $request, $id)
+    {
+      $user = User::where('role_id', $id)->get();
+      if ($user == "[]") {
+        $res['status'] = false;
+        $res['data'] = [];
+        return response($res);
+      }else{
+        $res['status'] = true;
+        $res['data'] = $user;
+        return response($res);
+      }
+    }
+
     //CRUD
     public function user_all(Request $request)
     {
