@@ -89,5 +89,8 @@ $ git push heroku master
 ```
 heroku run composer dumpt-autoload
 heroku run php artisan migrate:refresh
+heroku run php artisan db:seed --class=RolesSeeder
+heroku run php artisan db:seed --class=UsersSeeder
+heroku run artisan db:seed
 ```
 ## Feel Free to update ...

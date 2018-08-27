@@ -66,6 +66,7 @@ $app->get('/complaint/all', 'ComplaintController@get_complaint');
 $app->get('/complaint/all/{id}', 'ComplaintController@get_complaint_user_id');
 $app->get('/complaint/{id}', 'ComplaintController@get_complaint_id');
 $app->post('/complaint/sos_complaint', 'ComplaintController@sos_complaint');
+$app->post('/complaint/just_complaint', 'ComplaintController@just_complaint');
 $app->post('/complaint/update', 'ComplaintController@update');
 
 /* module news */
