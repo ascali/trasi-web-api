@@ -85,12 +85,12 @@ $ git commit -m "Updated database configuration"
 $ git push heroku master
 
 ```
-# run  artisan on heroku
+# run  artisan on heroku you can do this on local
 ```
-heroku run composer dumpt-autoload
+heroku run composer dump-autoload
 heroku run php artisan migrate:refresh
-heroku run php artisan db:seed --class=RolesSeeder
-heroku run php artisan db:seed --class=UsersSeeder
-heroku run artisan db:seed
+php artisan db:seed --class=RolesSeeder
+php artisan db:seed --class=UsersSeeder
+php artisan db:seed
 ```
 ## Feel Free to update ...

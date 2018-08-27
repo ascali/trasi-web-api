@@ -32,6 +32,7 @@ $(document).ready(function() {
                                 "data": null,
                                 "mRender": function(data, type, row){
                                     var row = " Latitude: "+row.latitude+' - Longitude: '+row.longitude;
+                                        row += " </br> Description"+row.description;
                                     return row;
                                 }
                             },
