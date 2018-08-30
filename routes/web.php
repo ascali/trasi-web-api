@@ -31,7 +31,11 @@ $app->get('/news', 'Controller@news');
 $app->get('/maps', 'Controller@maps');
 $app->get('/report', 'Controller@report');
 
+$app->get('/tes', function () use ($app) {
+    return view('template.pusher');
+});
 
+$app->get('/tesp', 'ComplaintController@pusher');
 
 
 $app->group(['prefix' => 'api/v1'], function () use ($app) {

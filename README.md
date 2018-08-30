@@ -93,4 +93,9 @@ php artisan db:seed --class=RolesSeeder
 php artisan db:seed --class=UsersSeeder
 php artisan db:seed
 ```
+
+# web push notification
+'''
+composer require pusher/pusher-php-server
+'''
 ## Feel Free to update ...

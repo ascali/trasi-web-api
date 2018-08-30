@@ -14,7 +14,21 @@
                 <div class="collapse" id="collapseExample">
                     <ul class="nav">
                         <li>
-                            <a href="#">
+                            <a href="#" onclick="swal({
+  title: 'Are you sure?',
+  text: 'You wont be able to revert this!',
+  type: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!'
+}).then((result) => {
+    swal(
+      'Deleted!',
+      'Your file has been deleted.',
+      'success'
+    )
+})">
                                 <span class="sidebar-mini"> MP </span>
                                 <span class="sidebar-normal"> My Profile </span>
                             </a>

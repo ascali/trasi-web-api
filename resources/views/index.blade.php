@@ -83,9 +83,65 @@
 	
 	<!--     Fonts and icons     -->
 	<link href="/assets/css/font-awesome.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
+	<!-- <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" /> -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
+
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+	integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+	crossorigin=""/>
+
+	<script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
+	<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+	integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+	crossorigin=""></script>
+	<script src="https://js.pusher.com/4.3/pusher.min.js"></script>
+	<!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" /> -->
+	<style>
+	  #map {
+	      position: absolute;
+	      top: 0;
+	      left: 0;
+	      bottom: 0;
+	      right: 0;
+	  }
+	</style>
+
+  <script>
+
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('0ed9d481e4c6b4057ba0', {
+      cluster: 'ap1',
+      forceTLS: true
+    });
+
+    var channel = pusher.subscribe('my-channelt');
+    channel.bind('my-eventt', function(data) {
+      // alert(JSON.stringify(data));
+      	var audio = new Audio('alert.mp3');
+		audio.play();
+
+		swal({
+		  title: 'Alert!!',
+		  text: data.message,
+		  type: 'warning',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: 'Yes, show it on map!'
+		}).then((result) => {
+			window.open(
+			  'https://maps.google.fr/maps?daddr=' + data.latitude + ',' + data.longitude,
+			  '_blank' // <- This is what makes it open in a new window.
+			);
+		});
+      // alert(data.message);
+      console.log('debug ', data);
+    });
+
+  </script>
 
 <!-- Google Tag Manager -->
 <!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -249,6 +305,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!-- Material Dashboard javascript methods -->
 <script src="/assets/js/material-dashboard98f3.js?v=1.3.0"></script>
+
+<!--  LEAFLET REATIME   -->
+<script src="/assets/js/leaflet-realtime.js"></script>
 
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script type="text/javascript">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Complaint;
+use Pusher;
 
 class ComplaintController extends Controller
 {
@@ -73,6 +74,24 @@ class ComplaintController extends Controller
       'created_by' => $request->input('updated_by'),
       'updated_by' => $request->input('updated_by')
     ]);
+    
+    $options = array(
+      'cluster' => 'ap1',
+      'useTLS' => false
+    );
+    $pusher = new Pusher\Pusher(
+      '0ed9d481e4c6b4057ba0',
+      '4bcaf4d514124e13cdca',
+      '587665',
+      $options
+    );
+    $data['message'] = 'SOS - '. $request->input('address');
+    $data['latitude'] = $request->input('latitude');
+    $data['longitude'] = $request->input('longitude');
+    $data['address'] = $request->input('address');
+
+    $pusher->trigger('my-channelt', 'my-eventt', $data);
+
     if($complaint->save()){
       $res['status'] = true;
       $res['data'] = [];
@@ -120,6 +139,27 @@ class ComplaintController extends Controller
       $res['data'] = 'Please fill field!';
       return response($res);
     }
+  }
+
+  public function pusher(Request $request){
+
+    $options = array(
+      'cluster' => 'ap1',
+      'useTLS' => false
+    );
+    $pusher = new Pusher\Pusher(
+      '0ed9d481e4c6b4057ba0',
+      '4bcaf4d514124e13cdca',
+      '587665',
+      $options
+    );
+
+    $data['message'] = 'hello world';
+    $pusher->trigger('my-channelt', 'my-eventt', $data);
+    $res['status'] = true;
+    $res['data'] = 'ok!';
+    return response($res);
+
   }
 
     
