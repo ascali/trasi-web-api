@@ -141,6 +141,28 @@
       console.log('debug ', data);
     });
 
+    channel.bind('my-eventt2', function(data) {
+      // alert(JSON.stringify(data));
+      	var audio = new Audio('alert.mp3');
+		audio.play();
+
+		swal({
+		  title: 'Alert!',
+		  text: data.message,
+		  type: 'warning',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: 'Ok!'
+		}).then((result) => {
+			window.open(
+			  'https://trasi-polindra.herokuapp.com/complaint'
+			);
+		});
+      // alert(data.message);
+      console.log('debug ', data);
+    });
+
   </script>
 
 <!-- Google Tag Manager -->

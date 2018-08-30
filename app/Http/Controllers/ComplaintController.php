@@ -113,6 +113,24 @@ class ComplaintController extends Controller
       'created_by' => $request->input('updated_by'),
       'updated_by' => $request->input('updated_by')
     ]);
+
+    $options = array(
+      'cluster' => 'ap1',
+      'useTLS' => false
+    );
+    $pusher = new Pusher\Pusher(
+      '0ed9d481e4c6b4057ba0',
+      '4bcaf4d514124e13cdca',
+      '587665',
+      $options
+    );
+    $data['message'] = 'Another Complaint - '. $request->input('address');
+    $data['latitude'] = $request->input('latitude');
+    $data['longitude'] = $request->input('longitude');
+    $data['address'] = $request->input('address');
+
+    $pusher->trigger('my-channelt', 'my-eventt2', $data);
+
     if($complaint->save()){
       $res['status'] = true;
       $res['data'] = [];
