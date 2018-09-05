@@ -166,6 +166,7 @@
                                         <div class="form-group label-floating">
                                             <label class="control-label">Email address</label>
                                             <input type="email" name="email" id="email" class="form-control">
+                                            <input type="hidden" name="via" id="via" class="form-control" value="web">
                                             <span class="help-box-email"></span>
                                         </div>
                                     </div>
@@ -265,32 +266,6 @@
     <script src="/assets/js/demo.js"></script>
 
 <!-- end js -->
-<script>
-// Facebook Pixel Code Don't Delete
-// !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-// n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-// n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-// t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-// document,'script','../../../../../connect.facebook.net/en_US/fbevents.js');
-
-// try{
-//   fbq('init', '111649226022273');
-//   fbq('track', "PageView");
-
-// }catch(err) {
-//   console.log('Facebook Track Error:', err);
-// }
-
-</script>
-<!-- <noscript>
-  <img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=111649226022273&amp;ev=PageView&amp;noscript=1"
-  />
-</noscript> -->
-
-
-
-
 
     <script type="text/javascript">
         var base_url = window.location.origin;
@@ -310,72 +285,33 @@
             }, 700)
         })
 
-    //function to store user name and password
-    /*function store() {
-        var inputEmail= $("#email").val();
-        var inputPassword= $("#password").val();
-        localStorage.setItem("email", inputEmail);
-        localStorage.setItem("password", inputPassword);
-    }*/
-    //function to LOG in
     function resetPassword() {
-        /*store();
-        var email = localStorage.getItem("email");
-        var password = localStorage.getItem("password");*/
-        // if (email != "undefined" || email != "null" || password != "undefined" || password !="null"){
-            // console.log("Welcome ", email);
+
         $.ajax({
-            url : base_url+'/api/v1/forget_password',
+            url : base_url+'/email/forget_password',
             type: 'POST',
             data: $('#resetPassForm').serialize(),
             dataType: 'JSON',
             success: function(data)
             {
+                console.log(data);
                 if(data.status == true){
-                    console.log('data if ', data.data);
-                    if (data.data.email == $("#email").val() && data.data.role_id == 1 
-                        || data.data.email == $("#email").val() && data.data.role_id == 2) {
-                        localStorage.setItem("session",JSON.stringify(data));
-                        // var session = JSON.parse(localStorage.getItem('session'));
-                        // console.log(session);
-                        window.location.href = base_url+'/dashboard';
-                    }else{
-                        console.log('data else in if ', data);
-                        $(".help-box-email").html("<small>"+data.data+"</small>").css('color','red');
-                        $(".help-box-password").html("<small>"+data.data+"</small>").css('color','red');
-                        localStorage.clear();
-                    }
+                    alert('Success Sent Reset Email Password');
+                    self.location = base_url;
                 }else{
-                    console.log('data else ', data);
-                    $(".help-box-email").html("<small>"+data.data+"</small>").css('color','red');
-                    $(".help-box-password").html("<small>"+data.data+"</small>").css('color','red');
-                    localStorage.clear();
+                    alert('Failed Sent Reset Email Password');
+                    self.location = base_url;
                 }
             },
             error: function (jqXHR, textStatus, errorThrown)
             {
                 console.log(jqXHR.responseJSON.email);
                 var email = jqXHR.responseJSON.email=="undefined"?jqXHR.responseJSON.email[0]:" ";
-                var password = jqXHR.responseJSON.password=="undefined"?" ":jqXHR.responseJSON.password;
-                $(".help-box-email").html("<small>"+email+"</small>").css('color','red');
-                $(".help-box-password").html("<small>"+password+"</small>").css('color','red');
+                // $(".help-box-email").html("<small>"+email+"</small>").css('color','red');
                 console.log(jqXHR.responseJSON);
-                localStorage.clear();
             }
         });
-        // } else {
-        //     console.log("Hello!");
-        //     localStorage.clear();
-        //     window.location.href = base_url;
-        // }
-
     }
 
     </script>
-
-
-
-
-
-<!-- Mirrored from demos.creative-tim.com/bs3/material-dashboard-pro/examples/pages/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Jul 2018 04:44:38 GMT -->
 </html>

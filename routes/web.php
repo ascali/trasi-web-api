@@ -22,7 +22,6 @@ $app->get('/key', function() {
 $app->get('/', 'Controller@index');
 $app->get('/login', 'Controller@login');
 $app->get('/register', 'Controller@register');
-$app->get('/forget_password', 'Controller@forget_password');
 
 $app->get('/dashboard', 'Controller@dashboard');
 $app->get('/role', 'Controller@role');
@@ -38,8 +37,9 @@ $app->get('/tes', function () use ($app) {
 
 $app->get('/tesp', 'ComplaintController@pusher');
 
-
-$app->get('/email/forget_password', 'Controller@send_email_forget_password');
+$app->get('/forget_password', 'Controller@forget_password');
+// api sent email reset pass
+$app->get('/email/forget_password', 'LoginController@send_email_forget_password');
 
 $app->group(['prefix' => 'api/v1'], function () use ($app) {
 $app->get('/', function () use ($app) {
