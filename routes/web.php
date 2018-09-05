@@ -38,6 +38,9 @@ $app->get('/tes', function () use ($app) {
 $app->get('/tesp', 'ComplaintController@pusher');
 
 $app->get('/forget_password', 'Controller@forget_password');
+// page form reset_password
+$app->get('/reset_password', 'Controller@reset_password');
+
 // api sent email reset pass
 $app->get('/email/forget_password', 'LoginController@send_email_forget_password');
 

@@ -92,7 +92,7 @@ class LoginController extends Controller
                     //Content
                     $mail->isHTML(true);                                  // Set email format to HTML
                     $mail->Subject = 'Here is link to reset password';
-                    $mail->Body    = 'This is the link to reset your password <b><font color=red><a href="https://trasi-polindra.herokuapp.com/api/v1/reset_password/'.$login->user_id.'?api_token='.$api_token.'">Reset Password</font></b> <br><br><br> Ignore this, if you are';
+                    $mail->Body    = 'This is the link to reset your password <b><font color=red><a href="https://trasi-polindra.herokuapp.com/reset_password?id='.$login->user_id.'&api_token='.$api_token.'">Reset Password</font></b> <br><br><br> Ignore this, if you are';
 
                     $mail->send();
                     // echo 'Message has been sent';

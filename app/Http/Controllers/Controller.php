@@ -76,6 +76,12 @@ class Controller extends BaseController
         return view($data['ishtml'], $data);
     }
 
+    public function reset_password(Request $request){
+        $data['modules'] = 'forget_password_form';
+        $data['ishtml'] = 'modules.user.forget_password_form';
+        return view($data['ishtml'], $data);
+    }
+
     public function send_email_forget_password(Request $request){
         $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
         try {

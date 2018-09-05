@@ -127,10 +127,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
-                        <form method="post" id="resetPassForm" action="javascript:void(0)">
+                        <form method="post" id="resetPassForm2" action="javascript:void(0)">
                             <div class="card card-login card-hidden">
                                 <div class="card-header text-center" data-background-color="rose">
-                                    <h4 class="card-title">TRASI | Forget Password</h4>
+                                    <h4 class="card-title">TRASI | Form Forget Password</h4>
                                     <div class="social-line">
                                          <a href="javascript:void(0)" class="btn btn-just-icon btn-simple">
                                             <i class="fa fa-lock"></i>
@@ -144,7 +144,7 @@
                                     </div>
                                 </div>
                                 <p class="category text-center">
-                                    Just enter email to reset password
+                                    Just enter new password
                                 </p>
                                 <div class="card-content">
                                     <!-- <div class="input-group">
@@ -160,19 +160,30 @@
                                     <input type="hidden" name="via" id="via" value="Website">
                                     <div class="input-group">
                                         <span class="input-group-addon">
-                                            <i class="material-icons">email</i>
+                                            <i class="material-icons">lock</i>
                                         </span>
 
                                         <div class="form-group label-floating">
-                                            <label class="control-label">Email address</label>
-                                            <input type="email" name="email" id="email" class="form-control">
+                                            <label class="control-label">Password</label>
+                                            <input type="password" name="password" id="password" class="form-control" />
+                                            <input type="hidden" name="user_id" value="{{ $_GET['id'] }}">
                                             <input type="hidden" name="via" id="via" class="form-control" value="web">
-                                            <span class="help-box-email"></span>
+                                            <span class="help-box-password"></span>
                                         </div>
                                     </div>
+
+                                    <div class="input-group">
+                                        <div class="checkbox form-horizontal-checkbox">
+                                            <label>
+                                                <input type="checkbox" name="optionsCheckboxes" onclick="myFunction()">
+                                                <b>Show Password</b>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                                 <div class="footer text-center">
-                                    <button type="submit" onclick="resetPassword()" class="btn btn-rose btn-simple btn-wd btn-lg">Send Email</button>
+                                    <button type="submit" onclick="resetPassword()" class="btn btn-rose btn-simple btn-wd btn-lg">Reset Password</button>
 
                                 </div>
                             </div>
@@ -290,7 +301,7 @@
         $.ajax({
             url : base_url+'/email/forget_password',
             type: 'POST',
-            data: $('#resetPassForm').serialize(),
+            data: $('#resetPassForm2').serialize(),
             dataType: 'JSON',
             success: function(data)
             {
@@ -314,4 +325,15 @@
     }
 
     </script>
+<script>
+function myFunction() {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+}
+</script>
+
 </html>
