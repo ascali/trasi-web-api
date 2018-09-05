@@ -26,60 +26,6 @@ This is web app using restful api with lumen
 
 # :trident: :octocat: How to lumen :cyclone: :banana: :full_moon: :earth_asia: :four_leaf_clover: :cat2:
 
-## SET UP EMAIL using PHPMAILER
-1. Open command
-2. Locate to trasi-web-api
-3. type: ```composer require phpmailer/phpmailer``` -> enter
-4. set set up email
-```
-    /*template*/
-    $mail = new PHPMailer;
-    //Tell PHPMailer to use SMTP
-    $mail->isSMTP();
-    //Enable SMTP debugging
-    // 0 = off (for production use)
-    // 1 = client messages
-    // 2 = client and server messages
-    $mail->SMTPDebug = 2;
-    // use
-    // $mail->Host = gethostbyname('smtp.gmail.com');
-    //Set the hostname of the mail server
-    $mail->Host = 'smtp.gmail.com';
-    // $mail->Host = 'gmail-smtp-msa.l.google.com';
-    //Whether to use SMTP authentication
-    $mail->SMTPAuth = true;
-    // $mail->SMTPAuth = false;
-    // $mail->SMTPSecure = false;
-    //Username to use for SMTP authentication - use full email address for gmail
-    $mail->Username = "test.email@gmail.com";
-    //Password to use for SMTP authentication
-    $mail->Password = "********";
-    //Set the encryption system to use - ssl (deprecated) or tls
-    $mail->SMTPSecure = 'ssl';
-    // if your network does not support SMTP over IPv6
-    //Set the SMTP port number ssl 465 or  tls 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
-    $mail->Port = 465;
-    // $mail->Host = 'tls://smtp.gmail.com:587';
-    //Set who the message is to be sent from
-    $mail->setFrom('test.email@gmail.com', 'No Reply');
-    //Set an alternative reply-to address
-    //Set who the message is to be sent to
-    $mail->addAddress('test@gmail.com', 'John Doe');
-    //Set the subject line
-    $mail->Subject = 'PHPMailer GMail SMTP test';
-    //Read an HTML message body from an external file, convert referenced images to embedded,
-    //convert HTML into a basic plain-text alternative body
-    // $mail->msgHTML(file_get_contents('contents.html'), __DIR__);
-    //Replace the plain text body with one created manually
-    $mail->Body    = 'Hi! This is my first e-mail sent through PHPMailer.';
-    $mail->AltBody = 'This is a plain-text message body';
-    if ($mail->send()) {
-        echo "OK";
-    } else { 
-        echo $mail->ErrorInfo;
-    }
-```
-
 ## To run app
 1. open cmd/terminal move to project folder
 2. ``` php -S localhost:port -t public ```
@@ -151,6 +97,60 @@ php artisan db:seed
 # web push notification
 ```
 composer require pusher/pusher-php-server
+```
+
+## SET UP EMAIL using PHPMAILER
+1. Open command
+2. Locate to trasi-web-api
+3. type: ``` composer require phpmailer/phpmailer``` -> enter
+4. set up email 
+```php
+    /*template*/
+    $mail = new PHPMailer;
+    //Tell PHPMailer to use SMTP
+    $mail->isSMTP();
+    //Enable SMTP debugging
+    // 0 = off (for production use)
+    // 1 = client messages
+    // 2 = client and server messages
+    $mail->SMTPDebug = 2;
+    // use
+    // $mail->Host = gethostbyname('smtp.gmail.com');
+    //Set the hostname of the mail server
+    $mail->Host = 'smtp.gmail.com';
+    // $mail->Host = 'gmail-smtp-msa.l.google.com';
+    //Whether to use SMTP authentication
+    $mail->SMTPAuth = true;
+    // $mail->SMTPAuth = false;
+    // $mail->SMTPSecure = false;
+    //Username to use for SMTP authentication - use full email address for gmail
+    $mail->Username = "test.email@gmail.com";
+    //Password to use for SMTP authentication
+    $mail->Password = "********";
+    //Set the encryption system to use - ssl (deprecated) or tls
+    $mail->SMTPSecure = 'ssl';
+    // if your network does not support SMTP over IPv6
+    //Set the SMTP port number ssl 465 or  tls 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
+    $mail->Port = 465;
+    // $mail->Host = 'tls://smtp.gmail.com:587';
+    //Set who the message is to be sent from
+    $mail->setFrom('test.email@gmail.com', 'No Reply');
+    //Set an alternative reply-to address
+    //Set who the message is to be sent to
+    $mail->addAddress('test@gmail.com', 'John Doe');
+    //Set the subject line
+    $mail->Subject = 'PHPMailer GMail SMTP test';
+    //Read an HTML message body from an external file, convert referenced images to embedded,
+    //convert HTML into a basic plain-text alternative body
+    // $mail->msgHTML(file_get_contents('contents.html'), __DIR__);
+    //Replace the plain text body with one created manually
+    $mail->Body    = 'Hi! This is my first e-mail sent through PHPMailer.';
+    $mail->AltBody = 'This is a plain-text message body';
+    if ($mail->send()) {
+        echo "OK";
+    } else { 
+        echo $mail->ErrorInfo;
+    }
 ```
 
 ## Feel Free to update ...
