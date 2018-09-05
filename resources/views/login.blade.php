@@ -108,12 +108,12 @@
                         Login
                     </a>
                 </li>
-                <!-- <li class= "">
-                    <a href="lock.html">
+                <li class= "">
+                    <a href="/forget_password">
                         <i class="material-icons">lock_open</i>
-                        Lock
+                        Forget Password
                     </a>
-                </li> -->
+                </li>
             </ul>
         </div>
     </div>
