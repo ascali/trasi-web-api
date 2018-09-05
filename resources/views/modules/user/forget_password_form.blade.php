@@ -157,7 +157,6 @@
                                             <input type="text" class="form-control">
                                         </div>
                                     </div> -->
-                                    <input type="hidden" name="via" id="via" value="Website">
                                     <div class="input-group">
                                         <span class="input-group-addon">
                                             <i class="material-icons">lock</i>
@@ -167,7 +166,8 @@
                                             <label class="control-label">Password</label>
                                             <input type="password" name="password" id="password" class="form-control" />
                                             <input type="hidden" name="user_id" value="{{ $_GET['id'] }}">
-                                            <input type="hidden" name="via" id="via" class="form-control" value="web">
+                                            <input type="hidden" name="via" id="via" class="form-control" value="Website">
+                                            <input type="hidden" name="api_token" id="api_token" class="form-control" value="{{ $_GET['api_token'] }}">
                                             <span class="help-box-password"></span>
                                         </div>
                                     </div>
@@ -299,7 +299,7 @@
     function resetPassword() {
 
         $.ajax({
-            url : base_url+'/email/forget_password',
+            url : base_url+'/api/v1/reset_password?api_token='+$("#api_token").val(),
             type: 'POST',
             data: $('#resetPassForm2').serialize(),
             dataType: 'JSON',
@@ -307,10 +307,10 @@
             {
                 console.log(data);
                 if(data.status == true){
-                    alert('Success Sent Reset Email Password');
+                    alert('Success Reset Password');
                     self.location = base_url;
                 }else{
-                    alert('Failed Sent Reset Email Password');
+                    alert('Failed Reset Password');
                     self.location = base_url;
                 }
             },

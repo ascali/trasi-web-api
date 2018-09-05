@@ -236,7 +236,7 @@ class UserController extends Controller
           'username'=> $username,
           'longname'=> $longname,
           'email'=> $email,
-          'password'=> $password,
+          'password'=> $hasher->make($request->input('password')),
           'gender' => $request->input('gender'),
           'pob' => $request->input('pob'),
           'dob' => $request->input('dob'),
@@ -278,4 +278,73 @@ class UserController extends Controller
         return response($res);
       }
     }
+
+
+    public function reset_password(Request $request)
+    {
+      $hasher = app()->make('hash');
+      $password = $hasher->make('password');
+      $id = $request->input('user_id');
+
+      $users = User::find($id);
+      if ($users !== null) {
+        $users->update([
+          'password' => $hasher->make($request->input('password')),
+          'api_token' => NULL,
+          'updated_by' => $users->username
+        ]);
+        $res['status'] = true;
+        $res['data'] = [];
+        return response($res);
+      }else{
+        $res['status'] = false;
+        $res['data'] = [];
+        return response($res);
+      }
+    }
+
+    public function update_profil_image(Request $request)
+    {
+      $temp = explode(".", $_FILES["image"]["name"]);
+      $newfilename = round(microtime(true)) . '.' . end($temp);
+      $target_file = 'image/'.$newfilename;
+      $uploadOk = 1;
+      $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+      // Allow certain file formats
+      if($imageFileType != 'jpg' && $imageFileType != 'png' && $imageFileType != 'jpeg' && $imageFileType != 'gif') {
+        $uploadOk = 0;
+        $res['status'] = true;
+        $res['data'] = 'Format file hanya JPG, JPEG, PNG & GIF yang diperbolehkan.';
+        return response($res);
+      }
+
+      if ($uploadOk == 0) {
+        $res['status'] = true;
+        $res['data'] = 'Gagal upload file gambar.';
+        return response($res);
+      } else {
+          if (move_uploaded_file($_FILES['image']['tmp_name'], $target_file)) {
+
+            $id = $request->input('user_id');
+
+            $users = User::find($id);
+            if ($users !== null) {
+              $users->update([
+                'img_profile' =>  $newfilename,
+                'updated_by' => $users->username
+              ]);
+              $res['status'] = true;
+              $res['data'] = 'Success update image!';
+              return response($res);
+            } else {
+              $res['status'] = true;
+              $res['data'] = 'Terjadi kesalahan saat mengunggah file gambar.';
+              return response($res);
+            }
+          }
+      }
+
+    }
+
 }

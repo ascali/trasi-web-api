@@ -42,7 +42,7 @@ $app->get('/forget_password', 'Controller@forget_password');
 $app->get('/reset_password', 'Controller@reset_password');
 
 // api sent email reset pass
-$app->get('/email/forget_password', 'LoginController@send_email_forget_password');
+$app->post('/email/forget_password', 'LoginController@send_email_forget_password');
 
 $app->group(['prefix' => 'api/v1'], function () use ($app) {
 $app->get('/', function () use ($app) {
@@ -54,6 +54,8 @@ $app->get('/', function () use ($app) {
 /* module login api aka get user api key, register aka create user, view user by id*/
 $app->post('/login', 'LoginController@login');
 $app->post('/register', 'UserController@register');
+$app->post('/reset_password', ['middleware' => 'auth', 'uses' => 'UserController@reset_password']);
+
 
 /* module role */
 $app->get('/role/all', 'RoleController@index');
@@ -70,6 +72,8 @@ $app->post('/user/create', ['middleware' => 'auth', 'uses' => 'UserController@cr
 $app->post('/user/update', ['middleware' => 'auth', 'uses' => 'UserController@update']);
 $app->post('/user/delete/{id}', ['middleware' => 'auth', 'uses' => 'UserController@delete']);
 $app->post('/user/last_position/{id}', ['middleware' => 'auth', 'uses' => 'UserController@last_position']);
+$app->post('/user/update_profil_image', 'UserController@update_profil_image');
+
 
 /* module Complaint*/
 $app->get('/complaint/all', 'ComplaintController@get_complaint');
